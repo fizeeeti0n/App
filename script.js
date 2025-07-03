@@ -136,7 +136,7 @@ async function processFiles(files) {
         }, 50);
 
         try {
-            const res = await fetch('http://127.0.0.1:5000/upload', { method: 'POST', body: formData });
+            const res = await fetch('https://app-q1pu.onrender.com/upload', { method: 'POST', body: formData });
             clearInterval(interval);
             filesProcessed++;
             progressFill.style.width = `${(filesProcessed / files.length) * 100}%`;
@@ -323,7 +323,7 @@ async function askQuestion() {
             .filter(doc => doc.imageData && doc.imageData.length > 0)
             .map(doc => doc.imageData);
 
-        const res = await fetch('http://127.0.0.1:5000/ask', {
+        const res = await fetch('https://app-q1pu.onrender.com/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -360,7 +360,7 @@ async function generateSummary() {
     addChatMessage('📄 Summarizing...', 'ai');
 
     try {
-        const res = await fetch('http://127.0.0.1:5000/summarize', {
+        const res = await fetch('https://app-q1pu.onrender.com/summarize', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
